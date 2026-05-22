@@ -233,13 +233,12 @@
       margin-top: 1px;
     }
 
-    /* ember dot on active — sits left of the external link icon */
-    .nav-btn.active::after {
+    /* ember dot on active — inline after description text */
+    .nav-btn.active .nav-sub::after {
       content: '';
-      position: absolute;
-      right: 32px;
-      top: 50%;
-      transform: translateY(-50%);
+      display: inline-block;
+      vertical-align: middle;
+      margin-left: 6px;
       width: 5px;
       height: 5px;
       border-radius: 50%;
@@ -381,6 +380,15 @@
       font-size: 15px;
       color: var(--text-dim);
       font-style: italic;
+    }
+
+    .tool-bar-version {
+      margin-left: auto;
+      font-family: 'IM Fell English', serif;
+      font-size: 12px;
+      color: var(--text-dim);
+      opacity: 0.5;
+      letter-spacing: 0.04em;
     }
 
     #home-btn {
@@ -891,11 +899,62 @@
     }
     .bottom-btn.active .bottom-icon { opacity: 1; }
 
+    /* ─── Mobile footer ────────────────────────────────────── */
+    .mobile-footer {
+      display: none;
+    }
+    .tool-open .mobile-footer {
+      display: none !important;
+    }
+    @media (max-width: 680px) {
+      .mobile-footer {
+        display: flex;
+        align-items: center;
+        background: var(--bg-deep);
+        border-top: 1px solid var(--border-gold);
+        padding: 14px 16px;
+        gap: 0;
+        flex-shrink: 0;
+      }
+      .mobile-footer-half {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .mobile-footer-divider {
+        width: 1px;
+        align-self: stretch;
+        background: var(--border-gold);
+        margin: 0 14px;
+        flex-shrink: 0;
+      }
+      .mobile-footer-credit {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2px;
+        line-height: 1.25;
+      }
+      .mobile-footer-credit .credit-title {
+        font-family: 'Cinzel Decorative', serif;
+        font-size: 13px;
+        color: var(--gold);
+        letter-spacing: 0.04em;
+      }
+      .mobile-footer-credit .credit-sub {
+        font-family: 'IM Fell English', serif;
+        font-size: 11px;
+        color: var(--text-dim);
+      }
+    }
+
     /* ─── Responsive ───────────────────────────────────────── */
     @media (max-width: 680px) {
       .sidebar { display: none; }
       .bottom-nav { display: flex; }
       .tool-bar { display: none; }
+      .splash-external { opacity: 1; }
     }
 
     /* ─── Fade-in on load ──────────────────────────────────── */
@@ -973,6 +1032,7 @@
       <div class="tool-quick-nav" id="tool-quick-nav"></div>
       <span class="tool-bar-sep" id="bar-sep" style="display:none">✦</span>
       <span class="tool-bar-desc" id="bar-desc"></span>
+      <span class="tool-bar-version">v1.1</span>
     </div>
 
     <div class="loading-bar hidden" id="loading-bar"></div>
@@ -1003,8 +1063,7 @@
               <p>
                 Harpagia Hub is a community-built collection of tools and a full game guide for Harpagia,
                 written and maintained by <strong style="color:var(--gold)">Atlas</strong> and <strong style="color:var(--gold)">BienChien</strong>.
-                Each tool opens instantly in this panel, and can also be launched standalone
-                via the <span style="color:var(--gold);font-size:18px;">↗</span> icon next to its name.
+                The Minigame Helper was created by Adude, an old Harpagia player who helped us all get the zen charm.
               </p>
             </div>
 
@@ -1013,11 +1072,11 @@
               <div class="splash-steps">
                 <div class="splash-step">
                   <div class="splash-step-num">1</div>
-                  <span>Click any tool in the sidebar (or tap a card below) to load it in this panel.</span>
+                  <span>Click any tool in the sidebar (topbar on mobile), or press any of the buttons below to load it in this panel.</span>
                 </div>
                 <div class="splash-step">
                   <div class="splash-step-num">2</div>
-                  <span>Use the <span style="color:var(--gold);font-size:18px;">↗</span> icon beside a tool name to open it in a new tab instead.</span>
+                  <span>Use the <span style="color:var(--gold);font-size:18px;">↗&#xFE0E;</span> icon beside a tool name to open it in a new tab instead.</span>
                 </div>
                 <div class="splash-step">
                   <div class="splash-step-num">3</div>
@@ -1282,7 +1341,7 @@ function buildNav() {
          target="_blank"
          rel="noopener"
          title="Open standalone"
-         onclick="event.stopPropagation()">↗</a>
+         onclick="event.stopPropagation()">↗&#xFE0E;</a>
     `;
     btn.addEventListener('click', () => loadTool(tool));
     sideNav.appendChild(btn);
@@ -1307,7 +1366,7 @@ function buildNav() {
         <div class="splash-tool-name">${tool.label}</div>
         <div class="splash-tool-desc">${tool.sub}</div>
       </span>
-      <a class="splash-external" href="${tool.url}" target="_blank" rel="noopener" title="Open standalone" onclick="event.stopPropagation()">↗</a>
+      <a class="splash-external" href="${tool.url}" target="_blank" rel="noopener" title="Open standalone" onclick="event.stopPropagation()">↗&#xFE0E;</a>
     `;
     card.addEventListener('click', () => loadTool(tool));
     splashGrid.appendChild(card);
@@ -1480,6 +1539,25 @@ window.loadTool = function(tool) {
   try { history.replaceState(null, '', '#' + tool.id); } catch(e) {}
 };
 </script>
+
+<!-- ── Mobile footer ─────────────────────────────────────── -->
+<div class="mobile-footer">
+  <div class="mobile-footer-half">
+    <a class="footer-link-btn discord" href="https://discord.gg/pePFWVdPge" target="_blank" rel="noopener" style="display:flex;width:100%;justify-content:center;">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057c.002.022.015.043.03.056a19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
+      </svg>
+      Join the Discord
+    </a>
+  </div>
+  <div class="mobile-footer-divider"></div>
+  <div class="mobile-footer-half">
+    <div class="mobile-footer-credit">
+      <span class="credit-title">Harphub <span style="font-size:10px;opacity:0.6;font-family:'IM Fell English',serif;letter-spacing:0;">(v1.1)</span></span>
+      <span class="credit-sub">Created by Atlas &amp; BienChien</span>
+    </div>
+  </div>
+</div>
 
 </body>
 </html>
