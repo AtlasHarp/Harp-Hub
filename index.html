@@ -969,6 +969,153 @@
     .nav-btn:nth-child(3) { animation-delay: 0.22s; }
     .nav-btn:nth-child(4) { animation-delay: 0.28s; }
     .nav-btn:nth-child(5) { animation-delay: 0.34s; }
+
+    /* ─── Referral codes button + popup ────────────────────── */
+    .referral-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 18px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border-gold);
+      background: linear-gradient(135deg, rgba(200,146,44,0.15), rgba(200,146,44,0.06));
+      color: var(--text);
+      font-family: 'IM Fell English', serif;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.18s;
+    }
+    .referral-btn strong {
+      font-family: 'Cinzel', serif;
+      font-weight: 600;
+      color: var(--gold-hi);
+      letter-spacing: 0.04em;
+    }
+    .referral-btn:hover {
+      background: rgba(200,146,44,0.22);
+      border-color: rgba(200,146,44,0.5);
+      box-shadow: 0 0 16px var(--gold-glow);
+    }
+    .referral-btn.splash-ref { margin-top: 18px; }
+    .referral-btn.sidebar-ref {
+      width: 100%;
+      margin-bottom: 8px;
+      font-size: 14px;
+      padding: 9px 6px;
+      flex-direction: column;
+      gap: 1px;
+      line-height: 1.2;
+    }
+    .referral-dialog {
+      width: min(480px, calc(100vw - 32px));
+      max-height: calc(100vh - 48px);
+      overflow-y: auto;
+      margin: auto;
+      padding: 24px 24px 20px;
+      background: var(--bg-panel);
+      color: var(--text);
+      border: 1px solid var(--border-gold);
+      border-radius: 10px;
+      box-shadow: 0 0 40px rgba(200,146,44,0.14), 0 10px 40px rgba(0,0,0,0.7);
+      font-family: 'IM Fell English', serif;
+    }
+    .referral-dialog::backdrop {
+      background: rgba(0,0,0,0.65);
+      backdrop-filter: blur(3px);
+      -webkit-backdrop-filter: blur(3px);
+    }
+    .referral-dialog h2 {
+      font-family: 'Cinzel', serif;
+      font-weight: 600;
+      font-size: 20px;
+      letter-spacing: 0.08em;
+      color: var(--gold-hi);
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      padding-right: 30px;
+      border-bottom: 1px solid var(--border-gold);
+    }
+    .referral-dialog p,
+    .referral-dialog li {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 17px;
+      line-height: 1.55;
+    }
+    .referral-dialog p { margin-bottom: 10px; }
+    .referral-dialog ul { margin: 0 0 12px 22px; }
+    .referral-dialog li::marker { color: var(--gold); }
+    .referral-dialog strong { color: var(--gold); font-weight: 600; }
+    .referral-dialog .ref-dim { color: var(--text-dim); font-size: 15px; font-style: italic; }
+    .referral-close {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      width: 28px;
+      height: 28px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--text-dim);
+      font-size: 18px;
+      line-height: 1;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .referral-close:hover { background: var(--bg-hover); border-color: var(--border-gold); color: var(--gold-hi); }
+    .referral-code-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 16px 0 12px;
+      padding: 10px 12px;
+      background: rgba(200,146,44,0.07);
+      border: 1px solid var(--border-gold);
+      border-radius: var(--radius);
+    }
+    .referral-code-label { font-size: 13px; color: var(--text-dim); font-style: italic; }
+    .referral-code {
+      font-family: 'SFMono-Regular', Menlo, Consolas, monospace;
+      font-size: 19px;
+      letter-spacing: 0.08em;
+      color: var(--gold-hi);
+      user-select: all;
+      -webkit-user-select: all;
+    }
+    .referral-copy {
+      margin-left: auto;
+      flex-shrink: 0;
+      padding: 7px 16px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border-gold);
+      background: rgba(200,146,44,0.12);
+      color: var(--gold-hi);
+      font-family: 'Cinzel', serif;
+      font-size: 13px;
+      letter-spacing: 0.06em;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .referral-copy:hover { background: rgba(200,146,44,0.25); box-shadow: 0 0 12px var(--gold-glow); }
+    .referral-dialog .referral-thanks { color: var(--gold); font-style: italic; }
+
+    .referral-dialog .ref-info-btn,
+    .referral-dialog .ref-back {
+      padding: 6px 14px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border-gold);
+      background: transparent;
+      color: var(--gold);
+      font-family: 'IM Fell English', serif;
+      font-size: 15px;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .referral-dialog .ref-info-btn { margin: 0 0 14px; }
+    .referral-dialog .ref-back { margin: 0 0 12px; }
+    .referral-dialog .ref-info-btn:hover,
+    .referral-dialog .ref-back:hover { background: rgba(200,146,44,0.12); color: var(--gold-hi); }
+    .referral-dialog .ref-link { color: var(--gold-hi); text-decoration: underline; text-underline-offset: 3px; }
   </style>
 </head>
 <body>
@@ -1005,6 +1152,9 @@
     </nav>
 
     <div class="sidebar-footer">
+
+      <!-- Referral codes -->
+      <button type="button" class="referral-btn sidebar-ref" data-referral-open><strong>Referral Codes</strong><span>new players click here</span></button>
 
       <!-- Discord -->
       <a class="footer-link-btn discord" href="https://discord.gg/pePFWVdPge" target="_blank" rel="noopener" style="display:flex;width:100%;margin-bottom:8px;">
@@ -1050,6 +1200,7 @@
               alt="Harpagia Hub"
             >
             <div class="splash-tagline"><span style="font-size:21px;color:var(--gold);">All community tools &amp; the full guide.</span><br>All on one page.</div>
+            <button type="button" class="referral-btn splash-ref" data-referral-open><strong>Referral Codes:</strong> new players click here</button>
           </div>
 
           <div class="splash-rule">
@@ -1558,6 +1709,92 @@ window.loadTool = function(tool) {
     </div>
   </div>
 </div>
+
+<!-- ── Referral codes popup ──────────────────────────────── -->
+<dialog class="referral-dialog" id="referral-dialog" aria-labelledby="referral-title">
+  <button type="button" class="referral-close" id="referral-close" aria-label="Close">&#215;</button>
+  <div class="ref-view" data-ref-view="main">
+      <h2 id="referral-title">Referral Codes</h2>
+      <p>New to Harpagia? Entering a referral code gets you these rewards right away:</p>
+      <ul>
+          <li>5 Lesser Experience Scrolls</li>
+          <li>5 Lesser Scrolls of Haste</li>
+          <li>5 Rune Chest Keys</li>
+          <li>1 Standard Card Pack + 1 Rare Card Pack</li>
+          <li>2,500 Card Enhancement XP</li>
+      </ul>
+      <button type="button" class="ref-info-btn" data-ref-show="info">What are these rewards?</button>
+      <p>To enter a code, open the menu and go to <strong>Social &#8594; Referrals</strong>, then paste it under "Enter a Referral Code". You need to be signed in and have cloud saved at least once first.</p>
+      <p class="ref-dim">Codes can only be entered within 31 days of creating your account, or while you're level 1,000 or below.</p>
+      <div class="referral-code-row">
+          <div>
+              <div class="referral-code-label">Atlas's code</div>
+              <div class="referral-code" id="referral-code">4jCgLzQf</div>
+          </div>
+          <button type="button" class="referral-copy" id="referral-copy">Copy</button>
+      </div>
+      <p class="referral-thanks">If you think any of the Harpagia Hub tools have been helpful to you, consider using my referral code. It's a nice early boost, as you get every reward above and I get a little thank-you. :)</p>
+  </div>
+  <div class="ref-view" data-ref-view="info" hidden>
+      <button type="button" class="ref-back" data-ref-show="main">&#8592; Back</button>
+      <h2>What are these rewards?</h2>
+      <p><strong>Lesser Experience Scrolls (x5):</strong> Each one grants 50,000 XP in any skill you choose (needs level 25). Use them from <strong>Items &#8594; Scrolls</strong>. Best used early on in a skill you don't have many levels in yet, to help get it going quicker.</p>
+      <p><strong>Lesser Scrolls of Haste (x5):</strong> Each one either cuts 10 minutes off an Expedition or Research, or adds 10 minutes of time to your Auracle. Also used from <strong>Items &#8594; Scrolls</strong>. Recommended for a bit of extra Auracle time, or save them for Expeditions.</p>
+      <p><strong>Rune Chest Keys (x5):</strong> Used in <strong>Treasure Room &#8594; Rune Chest Room</strong> to open rune chests, which give equippable runes.</p>
+      <p><strong>Standard + Rare Card Pack:</strong> These open automatically and grant you some monster cards. For more on how monster cards work, check out the <a href="#" class="ref-link" data-ref-cards>Monster Cards section of the guide</a>.</p>
+      <p><strong>2,500 Card Enhancement XP:</strong> Used to upgrade the cards you just received.</p>
+  </div>
+</dialog>
+<script>
+(function () {
+  const dlg = document.getElementById('referral-dialog');
+  const copyBtn = document.getElementById('referral-copy');
+  const code = document.getElementById('referral-code').textContent.trim();
+  const open = () => { if (dlg.showModal) dlg.showModal(); else dlg.setAttribute('open', ''); };
+  const close = () => { if (dlg.close) dlg.close(); else dlg.removeAttribute('open'); };
+  document.querySelectorAll('[data-referral-open]').forEach(b => b.addEventListener('click', open));
+  document.getElementById('referral-close').addEventListener('click', close);
+  dlg.querySelectorAll('[data-ref-show]').forEach(b => {
+    b.addEventListener('click', () => showView(b.getAttribute('data-ref-show')));
+  });
+  function showView(name) {
+    dlg.querySelectorAll('[data-ref-view]').forEach(v => { v.hidden = v.getAttribute('data-ref-view') !== name; });
+    dlg.scrollTop = 0;
+  }
+  dlg.addEventListener('close', () => showView('main'));
+  // Open the guide inside HarpHub, jumped to the Monster Cards section.
+  // The query string forces a full reload so the guide's #hash handler runs even if it's already open.
+  dlg.querySelector('[data-ref-cards]').addEventListener('click', e => {
+    e.preventDefault();
+    close();
+    const guide = TOOLS.find(t => t.id === 'guide');
+    activeTool = null;
+    window.loadTool(Object.assign({}, guide, { url: guide.url + '?r=' + Date.now() + '#section16' }));
+  });
+  dlg.addEventListener('click', e => {
+    if (e.target !== dlg) return;
+    const r = dlg.getBoundingClientRect();
+    if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) close();
+  });
+  const copied = () => {
+    copyBtn.textContent = 'Copied!';
+    setTimeout(() => { copyBtn.textContent = 'Copy'; }, 1600);
+  };
+  const fallbackCopy = () => {
+    const t = document.createElement('textarea');
+    t.value = code; t.setAttribute('readonly', '');
+    t.style.position = 'fixed'; t.style.opacity = '0';
+    dlg.appendChild(t); t.select();
+    try { document.execCommand('copy'); copied(); } catch (e) {}
+    dlg.removeChild(t);
+  };
+  copyBtn.addEventListener('click', () => {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(code).then(copied, fallbackCopy);
+    } else { fallbackCopy(); }
+  });
+})();
+</script>
 
 </body>
 </html>
